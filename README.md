@@ -9,4 +9,4 @@ We will be working in teams of 3. The teams will alternate throughout the semest
 Part 1
 ------
 I am assignmed: Database
-My team: unknown at the moment
+Team: #3
