@@ -9,4 +9,4 @@ We will be working in teams of 3. The teams will alternate throughout the semest
 Part 1
 ------
 I am assignmed: Database
-Team: #3
+Team: Tom Werner, Nicholas Evans, Wenbin Lu
