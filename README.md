@@ -1,7 +1,12 @@
-README for part1 of Object Oriented Software Design project
+README forObject Oriented Software Design project
 ===================
 
 by: Dylan Thiemann
 -------
 
-Some random notes
+We will be working in teams of 3. The teams will alternate throughout the semester. Each group will be assignment a certain set of classes to implement and test.
+
+Part 1
+------
+I am assignmed: Database
+My team: unknown at the moment
