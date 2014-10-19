@@ -5,6 +5,11 @@ import edu.uiowa.cs2820.engine.Field;
 
 // There is a definitely a better way to implement this
 // I just don't know what it is yet
+
+// Would a singleton make more sense? That way we know there is only
+// one instance of a database ever. I'm not sure if thats considered
+// bad practice though. I think I read something about it not being
+// ideal for TDD - Tom
 public class Database {
 
 	private HashMap<String, Field> map;
