@@ -22,6 +22,10 @@ import edu.uiowa.cs2820.engine.Field;
 // to the UserDemo.java). So I think it would be best to use an ArrayList for the
 // values of each key so we can store all the values. - Dylan
 
+// Maybe I'll create a hashmap of hashmaps and use the index to access 
+// the first layer of hashmaps and then use the field for taht index to 
+// get at the rest of the data (then we could use a singleton) - Dylan
+
 
 public class Database {
 
