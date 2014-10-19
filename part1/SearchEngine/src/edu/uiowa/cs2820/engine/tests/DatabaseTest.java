@@ -20,16 +20,6 @@ public class DatabaseTest {
     // - Dylan
     @Test
     public void testKeyValueSetAndGet() {
-    	String key1 = "this is my key";
-    	String value1 = "this is my value";
-    	String key2 = "key2";
-    	String value2 = "value2";
-    	
-    	Database myDB = new Database();
-    	myDB.setValueforKey(key1, value1);
-    	myDB.setValueforKey(key2, value2);
-
-    	assertEquals(myDB.getValue(key1), value1);
-    	assertEquals(myDB.getValue(key2), value2);
+    	fail("Implement new tests"); 
     }
 }
