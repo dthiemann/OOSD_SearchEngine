@@ -13,6 +13,10 @@ import edu.uiowa.cs2820.engine.Field;
 
 // That's what I was thinking at first... but wouldn't we need a database instance 
 // for each index? - Dylan
+
+// I don't think so. If each index just did something like 
+//      Database.getInstance().setValueforKey(field)
+// then they'd all end up in the same database, provided we were in the same session.
 public class Database {
 
 	private HashMap<String, Field> map;
