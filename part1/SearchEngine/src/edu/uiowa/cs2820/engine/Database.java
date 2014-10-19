@@ -3,6 +3,8 @@ package edu.uiowa.cs2820.engine;
 import java.util.HashMap;
 import edu.uiowa.cs2820.engine.Field;
 
+// There is a definitely a better way to implement this
+// I just don't know what it is yet
 public class Database {
 
 	private HashMap<String, Field> map;
