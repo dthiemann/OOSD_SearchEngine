@@ -26,5 +26,4 @@ public class Database {
 	public int getDatabaseSize() {
 		return count;
 	}
-	
 }

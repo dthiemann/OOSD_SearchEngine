@@ -15,6 +15,9 @@ public class DatabaseTest {
     
     // What is the purpose of the field class if we just use strings as the keys and values?
     // I wasn't really clear on why he had us even make the field class. - Tom
+    
+    // Yeah I wish he would of given us a little more direction with this assignment
+    // - Dylan
     @Test
     public void testKeyValueSetAndGet() {
     	String key1 = "this is my key";
