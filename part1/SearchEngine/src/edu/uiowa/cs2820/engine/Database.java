@@ -10,6 +10,9 @@ import edu.uiowa.cs2820.engine.Field;
 // one instance of a database ever. I'm not sure if thats considered
 // bad practice though. I think I read something about it not being
 // ideal for TDD - Tom
+
+// That's what I was thinking at first... but wouldn't we need a database instance 
+// for each index? - Dylan
 public class Database {
 
 	private HashMap<String, Field> map;
