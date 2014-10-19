@@ -17,23 +17,30 @@ import edu.uiowa.cs2820.engine.Field;
 // I don't think so. If each index just did something like 
 //      Database.getInstance().setValueforKey(field)
 // then they'd all end up in the same database, provided we were in the same session.
+
+// So it seems like that each field is going to have multiple values (according
+// to the UserDemo.java). So I think it would be best to use an ArrayList for the
+// values of each key so we can store all the values. - Dylan
+
+
 public class Database {
 
-	private HashMap<String, Field> map;
+	private HashMap<String, String> map;
 	private int count;
 	
 	public Database() {
-		map = new HashMap<String, Field>();
+		map = new HashMap<String, String>();
 		this.count = 0;
 	}
 	
 	public String getValue(Field key) {
-			return map.get(key.getFieldName()).getValue();
+			//return map.get(key.getFieldName()).getValue();
+		return "test";
 	}
 	
 	public void setValueforKey(Field key) {
 		if (key != null) { 
-			map.put(key.getFieldName(), key);
+			//map.put(key.getFieldName(), key);
 			count++;
 		}
 	}
