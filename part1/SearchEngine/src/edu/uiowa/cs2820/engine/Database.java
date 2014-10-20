@@ -33,6 +33,10 @@ import edu.uiowa.cs2820.engine.Field;
 // Maybe we should discuss this in the Github's Issue section.
 // - Wenbin
 
+// Yeah we were never planning on use files. We were just trying to figure
+// out the best way to utilize the class. I posted an issue about it on the
+// Github page. - Dylan
+
 
 public class Database {
 
