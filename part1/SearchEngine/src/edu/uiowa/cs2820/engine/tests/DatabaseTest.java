@@ -18,6 +18,12 @@ public class DatabaseTest {
     
     // Yeah I wish he would of given us a little more direction with this assignment
     // - Dylan
+
+    // As far as I can see, the field is just a pair containing the fieldName and some value.
+    // Having this data structure may allow us to do different operations on different types
+    // of values under the same field. For example, convert the string "$45.5" to a float while
+    // simply store "(tax included)". - Wenbin
+    
     @Test
     public void testKeyValueSetAndGet() {
     	fail("Implement new tests"); 
