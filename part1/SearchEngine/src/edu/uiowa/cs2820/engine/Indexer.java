@@ -20,13 +20,16 @@ public class Indexer {
         String F = f.getFieldName();
 
         if (fieldName == null) {
+            // it's the 1st field coming in, initialize fieldName
             fieldName = F;
             valueList.add(f.getValue());
 
         } else if (fieldName == F) {
+            // 2nd and future coming fields should match the existing fieldName
             valueList.add(f.getValue());
 
         } else {
+            // fieldName does not match, throw exception
             throw new Exception("Field name does not match");
         }
 

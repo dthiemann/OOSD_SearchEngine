@@ -26,6 +26,13 @@ import edu.uiowa.cs2820.engine.Field;
 // the first layer of hashmaps and then use the field for taht index to 
 // get at the rest of the data (then we could use a singleton) - Dylan
 
+// Guys, the professor said that this class "should not use any files" on his
+// webpage. Besides, what I understand is that it is the Indexer.close()'s
+// responsibility to pass fieldName, identifier and the list of values to the
+// Database class. You can see my code for details, I mocked a D.store(...) method.
+// Maybe we should discuss this in the Github's Issue section.
+// - Wenbin
+
 
 public class Database {
 
