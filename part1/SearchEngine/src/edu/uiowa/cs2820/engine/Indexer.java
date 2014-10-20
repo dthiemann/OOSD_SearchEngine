@@ -13,10 +13,10 @@ public class Indexer {
 
     Indexer(String identifier) throws Exception {
         this.identifier = identifier;
-        this.fildName = null;
+        this.fieldName = null;
     }
 
-    public add(Field f) {
+    public void add(Field f) {
         String F = f.getFieldName();
 
         if (fieldName == null) {
@@ -35,7 +35,7 @@ public class Indexer {
 
     }
 
-    public close() {
+    public void close() {
         // I may check database size here.
         Database D = new Database();
         D.store(identifier, fieldName, valueList);
