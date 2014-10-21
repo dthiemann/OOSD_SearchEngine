@@ -67,7 +67,7 @@ public class IntegrationTests
         setupNamesIndex(database);
         setupClassesIndex(database);
 
-        FieldSearch search = new FieldSearch();
+        FieldSearch search = new FieldSearch(database);
         ArrayList<Field> searches = new ArrayList<Field>();
         searches.add(new Field("name", "Tom"));
         searches.add(new Field("class", "OOP"));
