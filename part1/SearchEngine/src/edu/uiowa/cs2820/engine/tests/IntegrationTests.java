@@ -56,7 +56,7 @@ public class IntegrationTests
             for (int k = 1; k < lineData.length; k++)
             {
                 Field field = new Field(fieldName, lineData[k]);
-                Set<String> identifiers = database.getValue(field);
+                Set<String> identifiers = database.get(field);
                 assertTrue(identifiers.contains(filename + " - " + i));
             }
         }
