@@ -1,17 +1,24 @@
 package edu.uiowa.cs2820.engine;
 
+import edu.uiowa.cs2820.engine.Field;
+import edu.uiowa.cs2820.engine.Database;
+
 public class FieldSearch
 {
 
-    public FieldSearch(Database database)
-    {
-        // TODO Auto-generated constructor stub
+	private String[] result = null;
+	private Database db;
+	
+    public FieldSearch(Database database) {
+    	this.db = database;
+    	
     }
-
-    public String[] findEquals(Field search)
-    {
-        // TODO Auto-generated method stub
-        return null;
+    
+    // Search the database for fields that match the search terms
+    public String[] findEquals(Field search) {
+    	
+    	
+        return result;
     }
 
 }
