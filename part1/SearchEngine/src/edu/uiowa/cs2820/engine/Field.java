@@ -20,4 +20,9 @@ public class Field
     {
         return value;
     }
+    
+    public int hashCode()
+    {
+        return (fieldName + value).hashCode();
+    }
 }

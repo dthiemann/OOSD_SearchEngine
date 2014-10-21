@@ -11,12 +11,17 @@ public class Indexer {
     private String fieldName;
     private ArrayList<String> valueList;
 
-    Indexer(String identifier) throws Exception {
+    public Indexer(String identifier) {
         this.identifier = identifier;
         this.fieldName = null;
     }
 
     public void add(Field f) {
+        // I feel like this should be something like
+        //      database.add(field, identifier)
+        // also, the field name does not need to be the same
+        // throughout the indexer - Tom
+        
         String F = f.getFieldName();
 
         if (fieldName == null) {
