@@ -13,15 +13,14 @@ import edu.uiowa.cs2820.engine.Field;
 
 // mock Field class
 class FakeField extends Field {
+	private String fieldName;
+	private String value;
+
 	public FakeField(String fieldName, String value) {
 		super(fieldName, value);
 		this.fieldName = fieldName;
 		this.value = value;
-		// TODO Auto-generated constructor stub
 	}
-
-	private String fieldName;
-	private String value;
 
 	@Override
 	public String getFieldName() {
