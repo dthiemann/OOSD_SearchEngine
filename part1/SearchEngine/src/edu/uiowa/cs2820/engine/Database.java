@@ -1,7 +1,6 @@
 package edu.uiowa.cs2820.engine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 import edu.uiowa.cs2820.engine.Field;
 
@@ -42,27 +41,26 @@ import edu.uiowa.cs2820.engine.Field;
 
 public class Database {
 
-	private HashMap<String, HashMap<String, ArrayList<String>>> map;
+	
+	private HashMap<Field, HashSet<String>> map;
 	private int count;
 	
 	public Database() {
-		map = new HashMap<String, HashMap<String, ArrayList<String>>>();
+		map = new HashMap<Field, HashSet<String>>();
 		this.count = 0;
 	}
-	public ArrayList<String> getValue(String identifier ,String key) {
-		return map.get(identifier).get(key);
+	
+	public HashSet<String> get(Field field) {
+		return map.get(field);
 	}
 	
-	public void store(String identifier, String fieldName, ArrayList<String> valueList) {
-		if (map.containsKey(identifier)) {
-			map.get(identifier).put(fieldName, valueList);
+	public void store(Field field, String fileName) {
+		if (map.containsKey(field)) {
+			map.get(field).add(fileName);
 		} else {
-			ArrayList<String> temp = map.get(identifier).get(fieldName);
-			for (String value : valueList) {
-				temp.add(value);
-			}
-			
-			map.get(identifier).put(fieldName, temp);
+			HashSet<String> newSet = new HashSet<String>();
+			newSet.add(fileName);
+			map.put(field, newSet);
 		}
 	}
 	
