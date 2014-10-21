@@ -84,7 +84,7 @@ public class IndexerTest {
         assertEquals(db.getDatabaseSize(), 2);
 
         I.close();
-        FakeField F4 = new FakeField("Name2", "000");
+        FakeField F4 = new FakeField("Name3", "000");
         I.add(F4);
         assertEquals(db.getDatabaseSize(), 2);
     }
