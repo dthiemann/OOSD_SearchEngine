@@ -68,24 +68,25 @@ public class IndexerTest {
     public void test()
     {
 
-    	Indexer I = new Indexer(db, "FakeIdentifier");
+    	Indexer I1 = new Indexer(db, "FakeIdentifier 1");
     	assertEquals(db.getDatabaseSize(), 0);
 
     	FakeField F1 = new FakeField("Name1", "233");
-    	I.add(F1);
+    	I1.add(F1);
     	assertEquals(db.getDatabaseSize(), 1);
 
-    	FakeField F2 = new FakeField("Name1", "466");
-    	I.add(F2);
+        Indexer I2 = new Indexer(db, "FakeIdentifier 2");
+    	FakeField F2 = new FakeField("Name1", "233");
+    	I2.add(F2);
     	assertEquals(db.getDatabaseSize(), 1);
 
-        FakeField F3 = new FakeField("Name2", "699");
-        I.add(F3);
+        FakeField F3 = new FakeField("Name2", "466");
+        I1.add(F3);
         assertEquals(db.getDatabaseSize(), 2);
 
-        I.close();
-        FakeField F4 = new FakeField("Name3", "000");
-        I.add(F4);
+        I1.close();
+        FakeField F4 = new FakeField("Name3", "699");
+        I1.add(F4);
         assertEquals(db.getDatabaseSize(), 2);
     }
 
