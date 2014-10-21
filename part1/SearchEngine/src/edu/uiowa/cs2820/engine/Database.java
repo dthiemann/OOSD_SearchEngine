@@ -1,9 +1,8 @@
 package edu.uiowa.cs2820.engine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
-import edu.uiowa.cs2820.engine.Field;
+import java.util.HashSet;
+import java.util.Set;
 
 // There is a definitely a better way to implement this
 // I just don't know what it is yet
@@ -39,34 +38,30 @@ import edu.uiowa.cs2820.engine.Field;
 // out the best way to utilize the class. I posted an issue about it on the
 // Github page. - Dylan
 
+public class Database
+{
 
-public class Database {
+    private HashMap<Field, Set<String>> map;
 
-	private HashMap<String, HashMap<String, ArrayList<String>>> map;
-	private int count;
-	
-	public Database() {
-		map = new HashMap<String, HashMap<String, ArrayList<String>>>();
-		this.count = 0;
-	}
-	public ArrayList<String> getValue(String identifier ,String key) {
-		return map.get(identifier).get(key);
-	}
-	
-	public void store(String identifier, String fieldName, ArrayList<String> valueList) {
-		if (map.containsKey(identifier)) {
-			map.get(identifier).put(fieldName, valueList);
-		} else {
-			ArrayList<String> temp = map.get(identifier).get(fieldName);
-			for (String value : valueList) {
-				temp.add(value);
-			}
-			
-			map.get(identifier).put(fieldName, temp);
-		}
-	}
-	
-	public int getDatabaseSize() {
-		return count;
-	}
+    public Database()
+    {
+        map = new HashMap<Field, Set<String>>();
+    }
+
+    public Set<String> getValue(Field field)
+    {
+        return map.get(field);
+    }
+
+    public void store(Field field, String identifier)
+    {
+        if (!map.containsKey(field))
+            map.put(field, new HashSet<String>());
+        map.get(field).add(identifier);
+    }
+
+    public int getDatabaseSize()
+    {
+        return map.keySet().size();
+    }
 }
