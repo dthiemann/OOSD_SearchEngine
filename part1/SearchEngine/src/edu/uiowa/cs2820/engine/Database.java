@@ -1,6 +1,8 @@
 package edu.uiowa.cs2820.engine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
 import edu.uiowa.cs2820.engine.Field;
 
 // There is a definitely a better way to implement this
@@ -40,23 +42,27 @@ import edu.uiowa.cs2820.engine.Field;
 
 public class Database {
 
-	private HashMap<String, String> map;
+	private HashMap<String, HashMap<String, ArrayList<String>>> map;
 	private int count;
 	
 	public Database() {
-		map = new HashMap<String, String>();
+		map = new HashMap<String, HashMap<String, ArrayList<String>>>();
 		this.count = 0;
 	}
-	
-	public String getValue(Field key) {
-			//return map.get(key.getFieldName()).getValue();
-		return "test";
+	public ArrayList<String> getValue(String identifier ,String key) {
+		return map.get(identifier).get(key);
 	}
 	
-	public void setValueforKey(Field key) {
-		if (key != null) { 
-			//map.put(key.getFieldName(), key);
-			count++;
+	public void store(String identifier, String fieldName, ArrayList<String> valueList) {
+		if (map.containsKey(identifier)) {
+			map.get(identifier).put(fieldName, valueList);
+		} else {
+			ArrayList<String> temp = map.get(identifier).get(fieldName);
+			for (String value : valueList) {
+				temp.add(value);
+			}
+			
+			map.get(identifier).put(fieldName, temp);
 		}
 	}
 	
