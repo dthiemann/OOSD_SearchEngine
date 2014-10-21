@@ -25,4 +25,16 @@ public class Field
     {
         return (fieldName + value).hashCode();
     }
+    
+    public boolean equals(Object other)
+    {
+        if (other instanceof Field)
+            return ((Field)other).toString().equals(toString());
+        return false;
+    }
+    
+    public String toString()
+    {
+        return fieldName + " : " + value;
+    }
 }
