@@ -1,27 +1,26 @@
 package edu.uiowa.cs2820.engine;
 
+import edu.uiowa.cs2820.engine.Field;
+import edu.uiowa.cs2820.engine.Database;
 
-public class Indexer
-{
+public class Indexer {
 
     private String identifier;
-    private Database database;
+    private Database db;
     private boolean closed;
 
-    public Indexer(Database database, String identifier)
-    {
+    public Indexer(Database db, String identifier) {
         this.identifier = identifier;
-        this.database = database;
+        this.db = db;
     }
 
-    public void add(Field f)
-    {
+    public void add(Field f) {
         if (!closed)
-            database.store(f, identifier);
+            db.store(f, identifier);
+
     }
 
-    public void close()
-    {
+    public void close() {
         closed = true;
     }
 

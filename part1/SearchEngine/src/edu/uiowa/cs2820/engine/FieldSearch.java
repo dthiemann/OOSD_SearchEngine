@@ -11,6 +11,11 @@ public class FieldSearch
         this.database = database;
     }
 
+    public FieldSearch(Database database)
+    {
+        // TODO Auto-generated constructor stub
+    }
+
     public String[] findEquals(Field search)
     {
         Set<String> results = database.getValue(search);
