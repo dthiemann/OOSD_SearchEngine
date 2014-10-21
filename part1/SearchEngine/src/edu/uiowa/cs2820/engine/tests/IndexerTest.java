@@ -67,19 +67,26 @@ public class IndexerTest {
     @Test
     public void test()
     {
-        /* TODO
-         * Insert a new field
-         * Append an existing field
-         * Try store to a closed database
-         */
+
     	Indexer I = new Indexer(db, "FakeIdentifier");
     	assertEquals(db.getDatabaseSize(), 0);
-    	Field F1 = new Field("Name1", "233");
+
+    	FakeField F1 = new FakeField("Name1", "233");
     	I.add(F1);
     	assertEquals(db.getDatabaseSize(), 1);
-    	Field F2 = new Field("Name1", "466");
+
+    	FakeField F2 = new FakeField("Name1", "466");
     	I.add(F2);
     	assertEquals(db.getDatabaseSize(), 1);
+
+        FakeField F3 = new FakeField("Name2", "699");
+        I.add(F3);
+        assertEquals(db.getDatabaseSize(), 2);
+
+        I.close();
+        FakeField F4 = new FakeField("Name2", "000");
+        I.add(F4);
+        assertEquals(db.getDatabaseSize(), 2);
     }
 
 }
