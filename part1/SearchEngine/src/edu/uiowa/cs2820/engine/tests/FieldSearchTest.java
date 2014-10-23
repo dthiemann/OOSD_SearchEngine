@@ -18,31 +18,43 @@ public class FieldSearchTest {
 	@Before
 	public void setUp() throws Exception {
 		db = new Database();
-
 	}
 	
 	@Test
 	public void test_FieldSearch_and_findEquals() {
-		// The database needs a few things...
+		// The database needs a few things to be able to find
 		Field field1 = new Field("name", "namevalue");
 		Field field2 = new Field("field", "fieldvalue");
 		Field field3 = new Field("field", "fieldvalue_too");
 		
 		db.store(field1, "testFile.txt");
 		db.store(field2, "aFile.txt");
+		db.store(field2, "anotherFile.txt");
 		db.store(field3, "aFile.txt");
+
 		
 		HashSet<String> set1 = new HashSet<String>();
 		set1.add("testFile.txt");
 		HashSet<String> set2 = new HashSet<String>();
 		set2.add("aFile.txt");
+		HashSet<String> set3 = new HashSet<String>();
+		set3.add("anotherFile.txt");
 				
-		// Test case with no objects, should return nothing
+		
+		
+		// Search for the only match in the database
 		FieldSearch S = new FieldSearch(db);
-		String[] emptyResult = S.findEquals(new Field("name", "namevalue"));
-		assertEquals(emptyResult.length, 1);
-		assertEquals(emptyResult[0], "testFile.txt");
+		String[] r1 = S.findEquals(new Field("name", "namevalue"));
+		assertEquals(r1.length, 1);
+		assertEquals(r1[0], "testFile.txt");
 
+		// Search for something that has two matches
+		S = new FieldSearch(db);
+		String[] r2 = S.findEquals(new Field("field", "fieldvalue"));
+		assertEquals(r2.length, 2);
+		assertArrayEquals(r2, new String[]{"anotherFile.txt", "aFile.txt"});
+
+		
 	}
 
 }

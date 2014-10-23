@@ -19,13 +19,15 @@ public class FieldSearch {
     public String[] findEquals(Field search) {
     	found = db.get(search);
     	
-    	//May need an if to check for empty 'found'
-    	for (String str: found) {
-   			resultList.add(str);
-   		}
+       	if (found != null) {
+    		for (String str: found) {
+    			resultList.add(str);
+    		}
+       		result = resultList.toArray(new String[resultList.size()]);
+    	} else {
+    		result = new String[0];
+    	}
    	
-   		result = resultList.toArray(new String[resultList.size()]);
-   		
    		return result;
     }
 
