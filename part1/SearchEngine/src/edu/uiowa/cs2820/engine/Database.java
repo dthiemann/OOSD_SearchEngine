@@ -60,10 +60,12 @@ public class Database {
 	public void store(Field field, String fileName) {
 		if (map.containsKey(field) && fileName != null) {
 			map.get(field).add(fileName);
+			count++;
 		} else if (fileName != null) {
 			HashSet<String> newSet = new HashSet<String>();
 			newSet.add(fileName);
 			map.put(field, newSet);
+			count++;
 		}
 	}
 	

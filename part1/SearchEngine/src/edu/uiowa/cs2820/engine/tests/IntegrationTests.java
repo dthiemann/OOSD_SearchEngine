@@ -136,4 +136,24 @@ public class IntegrationTests
             assertTrue(Arrays.equals(results, searchAndResults.get(field)));
         }
     }
+    
+    @Test
+    public void test_empty_database_search_interaction()
+    {
+        Database database = new Database();
+        FieldSearch search = new FieldSearch(database);
+        assertEquals(search.findEquals(new Field("fieldName", "value")).length, 0);
+        assertEquals(database.getDatabaseSize(), 0);
+    }
+    
+    @Test
+    public void test_uncovered_branches()
+    {
+        Database database = new Database();
+        assertEquals(0, database.getDatabaseSize());
+        database.store(new Field("fieldName", "value"), "filename");
+        assertEquals(1, database.getDatabaseSize());
+        database.store(new Field("fieldName", "value"), null);
+        assertEquals(database.getDatabaseSize(), 1);
+    }
 }
