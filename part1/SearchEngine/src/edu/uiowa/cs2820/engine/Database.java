@@ -51,13 +51,16 @@ public class Database {
 	}
 	
 	public HashSet<String> get(Field field) {
-		return map.get(field);
+		if (map.containsKey(field))
+			return map.get(field);
+		else
+			return null;
 	}
 	
 	public void store(Field field, String fileName) {
-		if (map.containsKey(field)) {
+		if (map.containsKey(field) && fileName != null) {
 			map.get(field).add(fileName);
-		} else {
+		} else if (fileName != null) {
 			HashSet<String> newSet = new HashSet<String>();
 			newSet.add(fileName);
 			map.put(field, newSet);
