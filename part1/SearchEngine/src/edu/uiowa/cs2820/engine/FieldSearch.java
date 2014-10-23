@@ -8,16 +8,16 @@ import edu.uiowa.cs2820.engine.Database;
 public class FieldSearch {
 
 	private Database db;
-	private HashSet<String> found;
-	private List<String> resultList = new ArrayList<String>();
-	private String[] result;
 	
     public FieldSearch(Database database) {
     	this.db = database;
     }
     
     public String[] findEquals(Field search) {
-    	found = db.get(search);
+    	List<String> resultList = new ArrayList<String>();
+    	String[] result;
+
+    	HashSet<String> found = db.get(search);
     	
        	if (found != null) {
     		for (String str: found) {
