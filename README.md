@@ -1,4 +1,4 @@
-README forObject Oriented Software Design project
+Object Oriented Software Design project
 ===================
 
 Part 1 
