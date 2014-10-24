@@ -3,6 +3,14 @@ package edu.uiowa.cs2820.engine;
 import edu.uiowa.cs2820.engine.Field;
 import edu.uiowa.cs2820.engine.Database;
 
+/*
+ * Indexer, currently directly exposed to the user for indexing documents.
+ *
+ * author: Wenbin Lu
+ * date: 10/24/14
+ *
+ */
+
 public class Indexer {
 
     private String identifier;
