@@ -12,8 +12,9 @@ import org.junit.Test;
 import edu.uiowa.cs2820.engine.Database;
 import edu.uiowa.cs2820.engine.Field;
 import edu.uiowa.cs2820.engine.FieldSearch;
+import edu.uiowa.cs2820.engine.FieldSourcePair;
 import edu.uiowa.cs2820.engine.Indexer;
-import edu.uiowa.cs2820.engine.operators.GreaterThan;
+import edu.uiowa.cs2820.engine.operators.LessThanEqualTo;
 
 public class IntegrationTests
 {
@@ -158,7 +159,7 @@ public class IntegrationTests
     }
     
     @Test
-    public void test_end_to_end_with_same_fields_in_multiple_files_and_operator_searcg()
+    public void test_end_to_end_with_same_fields_in_multiple_files_and_operator_search()
     {
         // Create our database
         Database database = new Database();
@@ -202,10 +203,11 @@ public class IntegrationTests
         
         for (Field field : searchAndResults.keySet())
         {
-            String[] results = search.fieldWithOperator(field, new GreaterThan());
-            Arrays.sort(results);
-            System.out.println("Searched " + field + ". Got back " + Arrays.toString(results));
-            assertTrue(Arrays.equals(results, searchAndResults.get(field)));
+            FieldSourcePair[] results = search.fieldWithOperator(field, new LessThanEqualTo());
+            System.out.println("----------------------------------------");
+            System.out.println("Searched for " + field );
+            for (FieldSourcePair pair : results)
+                System.out.println(pair);
         }
     }
 }

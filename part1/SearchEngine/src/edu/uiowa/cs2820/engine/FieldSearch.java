@@ -1,6 +1,7 @@
 package edu.uiowa.cs2820.engine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -39,13 +40,24 @@ public class FieldSearch
         return result;
     }
 
-    public String[] fieldWithOperator(Field search, Operator operator)
+    public FieldSourcePair[] fieldWithOperator(Field search, Operator operator)
     {
-        HashSet<String> dbResults = db.getWithOperator(search, operator);
+        HashMap<Field, HashSet<String>> dbResults = db.getWithOperator(search, operator);
+        ArrayList<FieldSourcePair> results = new ArrayList<FieldSourcePair>();
+           
         if (dbResults == null)
-            return new String[0];
+        {
+            return new FieldSourcePair[0];
+        }
         else
-            return dbResults.toArray(new String[dbResults.size()]);
+        {
+            for (Field key : dbResults.keySet())
+            {
+                for (String source : dbResults.get(key))
+                    results.add(new FieldSourcePair(key, source));
+            }
+            return results.toArray(new FieldSourcePair[results.size()]);
+        }
     }
 
 }

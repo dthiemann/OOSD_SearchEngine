@@ -55,15 +55,20 @@ public class Database
         return count;
     }
 
-    public HashSet<String> getWithOperator(Field search, Operator operator)
+    public HashMap<Field, HashSet<String>> getWithOperator(Field search, Operator operator)
     {
         if (map.containsKey(search))
         {
-            HashSet<String> results = new HashSet<String>();
+            HashMap<Field, HashSet<String>> results = new HashMap<Field, HashSet<String>>();
+            
+            // Loop through the database
             for (Field field : map.keySet())
             {
+                // If a field matches our criteria, add it and all the strings it maps to to our result
                 if (operator.evaluate(field, search) && field.getFieldName().equals(search.getFieldName()))
-                    results.addAll(map.get(field));
+                {
+                    results.put(field, map.get(field));
+                }
             }
             return results;
         }
