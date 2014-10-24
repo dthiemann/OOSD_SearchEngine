@@ -56,7 +56,7 @@ public class IntegrationTests
             for (int k = 1; k < lineData.length; k++)
             {
                 Field field = new Field(fieldName, lineData[k]);
-                Set<String> identifiers = database.getValue(field);
+                Set<String> identifiers = database.get(field);
                 assertTrue(identifiers.contains(filename + " - " + i));
             }
         }
@@ -135,5 +135,25 @@ public class IntegrationTests
             Arrays.sort(results);
             assertTrue(Arrays.equals(results, searchAndResults.get(field)));
         }
+    }
+    
+    @Test
+    public void test_empty_database_search_interaction()
+    {
+        Database database = new Database();
+        FieldSearch search = new FieldSearch(database);
+        assertEquals(search.findEquals(new Field("fieldName", "value")).length, 0);
+        assertEquals(database.getDatabaseSize(), 0);
+    }
+    
+    @Test
+    public void test_uncovered_branches()
+    {
+        Database database = new Database();
+        assertEquals(0, database.getDatabaseSize());
+        database.store(new Field("fieldName", "value"), "filename");
+        assertEquals(1, database.getDatabaseSize());
+        database.store(new Field("fieldName", "value"), null);
+        assertEquals(database.getDatabaseSize(), 1);
     }
 }

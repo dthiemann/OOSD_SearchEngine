@@ -1,12 +1,9 @@
-README forObject Oriented Software Design project
+Object Oriented Software Design project
 ===================
 
-by: Dylan Thiemann
+Part 1 
 -------
+by: Nicholas Evans, Dylan Thiemann, Wenbin Lu, & Tom Werner<br>
 
-We will be working in teams of 3. The teams will alternate throughout the semester. Each group will be assignment a certain set of classes to implement and test.
+Create a simple search engine that utilizes the classs Field, Database, FieldSearch and Index
 
-Part 1
-------
-I am assigned: Database <br>
-Team: Tom Werner, Nicholas Evans, Wenbin Lu
