@@ -17,6 +17,7 @@ import edu.uiowa.cs2820.engine.operators.GreaterThan;
 import edu.uiowa.cs2820.engine.operators.GreaterThanEqualTo;
 import edu.uiowa.cs2820.engine.operators.LessThan;
 import edu.uiowa.cs2820.engine.operators.LessThanEqualTo;
+import edu.uiowa.cs2820.engine.operators.Not;
 
 public class OperatorTests
 {
@@ -34,7 +35,9 @@ public class OperatorTests
                 "letters1 a", 
                 "letters1 a b c d e f g", 
                 "letters2 a b c d e f g", 
-                "letters2 a", };
+                "letters2 a",
+                "notTest1 a b",
+                "notTest2 c",};
 
         // Load our data
         int lineNum = 0;
@@ -51,6 +54,30 @@ public class OperatorTests
         // Now we'll check that field search can access all of this.
         FieldSearch search = new FieldSearch(database);
         return search;
+    }
+
+    @Test
+    public void test_search_with_not_operator()
+    {
+        FieldSearch search = initializeOperatorTests();
+
+        // Set up a bunch of queries and the expected result
+        Field field1 = new Field("notTest1", "a");
+        Field field2 = new Field("notTest1", "b");
+        Field field3 = new Field("notTest2", "c");
+        HashMap<Field, FieldSourcePair[]> searchNotResults = new HashMap<Field, FieldSourcePair[]>();
+        searchNotResults.put(field1, new FieldSourcePair[] { new FieldSourcePair(field2, "identifier - 4") });
+        searchNotResults.put(field2, new FieldSourcePair[] { new FieldSourcePair(field1, "identifier - 4") });
+        searchNotResults.put(field3, new FieldSourcePair[] {  });
+
+        for (Field field : searchNotResults.keySet())
+        {
+            FieldSourcePair[] results = search.fieldWithOperator(field, new Not());
+            FieldSourcePair[] expected = searchNotResults.get(field); 
+            Arrays.sort(results);
+            Arrays.sort(expected);
+            assertArrayEquals(expected, results);
+        }
     }
 
     @Test

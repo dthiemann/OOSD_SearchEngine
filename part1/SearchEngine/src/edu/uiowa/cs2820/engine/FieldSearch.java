@@ -44,7 +44,7 @@ public class FieldSearch
     {
         HashMap<Field, HashSet<String>> dbResults = db.getWithOperator(search, operator);
         ArrayList<FieldSourcePair> results = new ArrayList<FieldSourcePair>();
-           
+        
         if (dbResults == null)
         {
             return new FieldSourcePair[0];
