@@ -1,5 +1,12 @@
 package edu.uiowa.cs2820.engine;
 
+/**
+ * Field class that is used by Database, FieldSearch, and Indexer
+ * 
+ * @author Tom Werner
+ * Date:   10/23/2014
+ *
+ */
 public class Field
 {
     private String fieldName;
