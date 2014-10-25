@@ -1,8 +1,7 @@
 package edu.uiowa.cs2820.engine.operators;
 
-import edu.uiowa.cs2820.engine.Field;
 
-public interface Operator
+public interface Operator<T>
 {
-    public boolean evaluate(Field field1, Field field2);
+    public boolean evaluate(T item1, T item2);
 }

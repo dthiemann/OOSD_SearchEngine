@@ -10,7 +10,7 @@ import edu.uiowa.cs2820.engine.operators.Operator;
 public class FieldSearch
 {
 
-    private Database db;
+    protected Database db;
 
     public FieldSearch(Database database)
     {
@@ -40,24 +40,28 @@ public class FieldSearch
         return result;
     }
 
-    public FieldSourcePair[] fieldWithOperator(Field search, Operator operator)
+    public FieldSourcePair[] fieldWithOperator(Field search, Operator<Field> operator)
     {
         HashMap<Field, HashSet<String>> dbResults = db.getWithOperator(search, operator);
+        return createArrayFromDatabaseSubset(dbResults);
+    }
+
+    protected FieldSourcePair[] createArrayFromDatabaseSubset(HashMap<Field, HashSet<String>> subset)
+    {
         ArrayList<FieldSourcePair> results = new ArrayList<FieldSourcePair>();
-        
-        if (dbResults == null)
+
+        if (subset == null)
         {
             return new FieldSourcePair[0];
         }
         else
         {
-            for (Field key : dbResults.keySet())
+            for (Field key : subset.keySet())
             {
-                for (String source : dbResults.get(key))
+                for (String source : subset.get(key))
                     results.add(new FieldSourcePair(key, source));
             }
             return results.toArray(new FieldSourcePair[results.size()]);
         }
     }
-
 }

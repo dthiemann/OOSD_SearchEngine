@@ -4,6 +4,7 @@ import java.util.*;
 
 import edu.uiowa.cs2820.engine.Field;
 import edu.uiowa.cs2820.engine.operators.Operator;
+import edu.uiowa.cs2820.engine.query.Queryable;
 
 /*
  * Database used by the Indexer and FieldSearch classes for storing
@@ -55,16 +56,17 @@ public class Database
         return count;
     }
 
-    public HashMap<Field, HashSet<String>> getWithOperator(Field search, Operator operator)
+    public HashMap<Field, HashSet<String>> getWithOperator(Field search, Operator<Field> operator)
     {
         if (map.containsKey(search))
         {
             HashMap<Field, HashSet<String>> results = new HashMap<Field, HashSet<String>>();
-            
+
             // Loop through the database
             for (Field field : map.keySet())
             {
-                // If a field matches our criteria, add it and all the strings it maps to to our result
+                // If a field matches our criteria, add it and all the strings
+                // it maps to to our result
                 if (operator.evaluate(field, search) && field.getFieldName().equals(search.getFieldName()))
                 {
                     results.put(field, map.get(field));
@@ -76,5 +78,19 @@ public class Database
         {
             return null;
         }
+    }
+
+    public HashMap<Field, HashSet<String>> searchQueryable(Queryable query)
+    {
+        HashMap<Field, HashSet<String>> result = new HashMap<Field, HashSet<String>>();
+        for (Field key : map.keySet())
+        {
+            if (query.isSatisfiedBy(key))
+            {
+                result.put(key, map.get(key));
+            }
+        }
+
+        return result;
     }
 }

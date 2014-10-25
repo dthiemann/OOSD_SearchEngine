@@ -9,4 +9,9 @@ public class LessThanEqualTo extends LessThan
     {
         return super.evaluate(field1, field2) || field1.equals(field2);
     }
+    
+    public String toString()
+    {
+        return "<=";
+    }
 }
