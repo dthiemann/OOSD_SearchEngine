@@ -19,7 +19,7 @@ import edu.uiowa.cs2820.engine.operators.LessThan;
 import edu.uiowa.cs2820.engine.operators.LessThanEqualTo;
 import edu.uiowa.cs2820.engine.operators.Not;
 
-public class OperatorTests
+public class Integration_OperatorTests
 {
 
     private FieldSearch initializeOperatorTests()

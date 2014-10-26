@@ -14,7 +14,7 @@ public class MultiQuery implements Queryable
         this(new Or(), args);
     }
 
-    public MultiQuery(Operator<Boolean> operator, Queryable[] args)
+    public MultiQuery(Operator<Boolean> operator, Queryable... args)
     {
         if (args == null || args.length == 0)
             args = new Query[0];
@@ -25,9 +25,12 @@ public class MultiQuery implements Queryable
     @Override
     public boolean isSatisfiedBy(Field other)
     {
-        boolean passedSoFar = true;
-        for (Queryable query : queries)
-            if (!query.isSatisfiedBy(other))
+        if (queries.length == 0)
+            return false;
+        
+        boolean passedSoFar = queries[0].isSatisfiedBy(other);
+        for (int i = 1; i < queries.length; i++)
+            if (!queries[i].isSatisfiedBy(other))
                 passedSoFar = operator.evaluate(passedSoFar, false);
         return passedSoFar;
     }

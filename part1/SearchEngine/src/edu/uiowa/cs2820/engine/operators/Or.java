@@ -14,4 +14,17 @@ public class Or implements Operator<Boolean>
         return "OR";
     }
 
+    @Override
+    public boolean matchesToken(String token)
+    {
+        return token.equalsIgnoreCase("OR") || token.equals("||");
+    }
+
+    @Override
+    public String[] allowableTokens()
+    {
+        return new String[]{ "OR", "or", "||" };
+    }
+
+    
 }

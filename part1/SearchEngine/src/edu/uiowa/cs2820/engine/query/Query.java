@@ -32,4 +32,9 @@ public class Query implements Queryable
     {
         return operator.getClass().getSimpleName() + " " + field.toString();
     }
+    
+    public Operator<Field> getOperator()
+    {
+        return operator;
+    }
 }

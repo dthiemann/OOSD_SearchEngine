@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ DatabaseTest.class, FieldSearchTest.class, FieldTest.class, IndexerTest.class, IntegrationTests.class, OperatorTests.class })
+@SuiteClasses({ DatabaseTest.class, FieldSearchTest.class, FieldTest.class, IndexerTest.class, IntegrationTests.class, Integration_OperatorTests.class,
+        Integration_QueryTests.class })
 public class AllTests
 {
 

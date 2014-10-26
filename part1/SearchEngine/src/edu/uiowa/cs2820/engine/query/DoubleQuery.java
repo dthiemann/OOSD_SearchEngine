@@ -9,7 +9,6 @@ public class DoubleQuery implements Queryable
     private Queryable query1;
     private Queryable query2;
     private Operator<Boolean> operator;
-    
 
     public DoubleQuery(Queryable query1, Queryable query2)
     {
@@ -30,9 +29,19 @@ public class DoubleQuery implements Queryable
     {
         return operator.evaluate(query1.isSatisfiedBy(field), query2.isSatisfiedBy(field));
     }
-    
+
     public String toString()
     {
         return "[ (" + query1 + ") " + operator.getClass().getSimpleName() + " (" + query2 + ") ]";
+    }
+
+    public boolean equals(Object other)
+    {
+        if (other instanceof DoubleQuery)
+        {
+            return ((DoubleQuery) other).query1.equals(query1) && ((DoubleQuery) other).query2.equals(query2)
+                    && ((DoubleQuery) other).operator.equals(operator);
+        }
+        return false;
     }
 }

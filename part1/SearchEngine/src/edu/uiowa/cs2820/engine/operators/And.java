@@ -13,4 +13,14 @@ public class And implements Operator<Boolean>
     {
         return "AND";
     }
+
+    public boolean matchesToken(String token)
+    {
+        return token.equalsIgnoreCase("AND") || token.equals("&&");       
+    }
+    
+    public String[] allowableTokens()
+    {
+        return new String[]{"AND", "and", "&&"};
+    }
 }

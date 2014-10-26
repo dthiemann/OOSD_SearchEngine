@@ -14,4 +14,16 @@ public class GreaterThanEqualTo extends GreaterThan
     {
         return ">=";
     }
+
+    @Override
+    public boolean matchesToken(String token)
+    {
+        return token.equals("=>");
+    }
+
+    @Override
+    public String[] allowableTokens()
+    {
+        return new String[]{ "=>" };
+    }
 }

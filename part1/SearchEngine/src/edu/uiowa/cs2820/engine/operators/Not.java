@@ -15,4 +15,18 @@ public class Not implements Operator<Field>
         return "NOT";
     }
 
+    @Override
+    public boolean matchesToken(String token)
+    {
+        return token.equalsIgnoreCase("NOT") || token.equals("!=");
+    }
+
+    @Override
+    public String[] allowableTokens()
+    {
+        return new String[]{ "NOT", "not", "!=" };
+    }
+    
+    
+    
 }

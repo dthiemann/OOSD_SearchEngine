@@ -14,4 +14,16 @@ public class LessThanEqualTo extends LessThan
     {
         return "<=";
     }
+    
+    @Override
+    public boolean matchesToken(String token)
+    {
+        return token.equals("=<");
+    }
+
+    @Override
+    public String[] allowableTokens()
+    {
+        return new String[]{ "=<" };
+    }
 }

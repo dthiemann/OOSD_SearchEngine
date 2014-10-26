@@ -19,7 +19,7 @@ import edu.uiowa.cs2820.engine.query.DoubleQuery;
 import edu.uiowa.cs2820.engine.query.Query;
 import edu.uiowa.cs2820.engine.query.Queryable;
 
-public class QueryTests
+public class Integration_QueryTests
 {
     private QuerySearch initializeQueryTests()
     {

@@ -56,6 +56,6 @@ public class FieldTest
         String field = "" + Math.random();
         String value = "" + Math.random();
         Field field1 = new Field(field, value);
-        assertEquals((field + " : " + value), field1.toString());
+        assertEquals(( "(" + field + " : " + value + ")"), field1.toString());
     }
 }

@@ -14,4 +14,20 @@ public class Equals implements Operator<Field>
     {
         return "==";
     }
+
+    @Override
+    public boolean matchesToken(String token)
+    {
+        return token.equals("==");
+    }
+
+    @Override
+    public String[] allowableTokens()
+    {
+        return new String[]{ "==" };
+    }
+    
+    
+    
+    
 }
